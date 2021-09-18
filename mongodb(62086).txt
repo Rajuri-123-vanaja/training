@@ -1,0 +1,121 @@
+1) MOngoDB called as NO SQL (Y/N)    
+
+   YES                                                                           
+
+2) Create MENU and VENDOR Tables and add 5 records using MongoDb
+
+CREATE TABLE vendor (
+  VEN_ID 
+  VEN_NAME 
+  VEN_NUMBER 
+  VEN_USER_NAME 
+  VEN_PASSWORD 
+  VEN_EMAIL
+  VEN_ADDRESS
+) ;
+
+CREATE TABLE Menu (
+  MENU_ID 
+  MENU_ITEM 
+  MENU_PRICE 
+  MENU_CALORIES 
+  MENU_TYPE 
+  MENU_STATUS 
+  MENU_RATING 
+);
+
+3) Display all records from Menu by hiding _Id field
+
+     db.menu.find({},{"menuid":0}).pretty();
+
+4) Display all records from Vendor by hiding _id field
+ 
+    db.menu.find({},{"vendorid":0}).pretty();
+
+5) Mongo Db RDBMS table called as 
+ 
+  collection
+
+6) Command to drop collection in Mongodb
+ 
+   db. collection. drop()
+
+7) Command to drop database in mongodb
+ 
+  db. dropDatabase() 
+
+8) Write the syntax to insertMany records in Mongodb (for Menu Collection)
+
+    db.menu.insert([
+    {
+      empno:1,
+      name:"vanaja",
+      basic:88234
+    },
+    {
+      empno:2,
+      name:"vanaja",
+      basic:88234
+    },
+     {
+      empno:3,
+      name:"vanaja",
+      basic:88234
+    }
+   ]);
+
+
+        
+ 9) Write command for Multiple Documents Insert
+
+     db.menu.insertmany()
+
+10) Display first 3 records in Menu table
+   
+      db.menu.find().limit(3).pretty();
+    
+
+11) Display all records from menu collection except first 3 records
+
+      db.menu.find().skip(3).pretty();
+
+12) Display vendor collection records sort by Ven_name
+
+       db.vendor.find().sort({"vername":1}).pretty();
+
+13) Give one example of findOne()
+
+    db.menu.findOne({"menu_item":"fish"});
+
+14) Write command to display VendorName as ('swiggy','zomoto')
+
+15) Write command as display vendorName not as 'swiggy' or 'zomoto'
+
+16) Write command as display Menu_Type is 'VEG' and Price > 100
+
+    db.menu.find({$and:[{"menu_type":"veg"},{"menu_price":{$gt:100}}]}).pretty();
+
+17) Write command as display Menu_Type is 'VEG' or Price < 100
+ 
+   db.menu.find({$or:[{"menu_type":"veg"},{"menu_price":{$lt:100}}]}).pretty();
+
+18) Update Menu_Price as 200 for Menu_ID 2
+ 
+    db.menu.update({"menuid":2},{$set:{"menu_price":200}});
+db.menu.findOne({"menuid":2});
+
+19) Update Vendor_Address as 'CHENNAI' for Vendor_ID 3
+ 
+   db.vendor.update({"venid":3},{$set:{"venadd":"chennai"}});
+
+20) Remove record from menu whose Menu_ID is 11
+ 
+    db.menu.remove({"menuid":1});
+WriteResult({ "nRemoved" : 1 })
+
+21) Remove record from Menu whose Vendor_Name is 'aarifa'
+
+   db.vendor.remove({"venname":"aarifa"});
+WriteResult({ "nRemoved" : 0 })
+
+  

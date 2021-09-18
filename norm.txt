@@ -1,0 +1,68 @@
+ AgentPolicy(AgentId,FirstName,LastName,City,State,PolicyID,Installment,totalPremium,PayMode)
+
+Above table normalize and show the result
+
+employee( EmployeeId,EmployeeName,MobileNo,DateOfJoining,Leave Balance, ManagerId,Department,LeaveId,No Of Days,Leave Start date, Leave End date, Leave Type, Leave Status,Leave Reason,Leave Applied Date,Leave Comments)
+
+ 1nf as one employee can take multiple choices
+
+insert: employee values cant be filled until the date of joining
+
+delete:if emp got rejected data should removed
+
+ 1NF inadequate to hsndle this situation
+
+
+ 2NF: functional dependency
+ 		
+employee id is taking as whole key(primary key)									
+employee Id=>employeename,
+             mobileno,dateofjoining, 
+             leave balance,
+             manager id,
+             department,
+             leaveidLeaveId(x),
+             No Of Days(x),
+             Leave Start date(x), 
+             Leave End date(X),
+             Leave Type(x), 
+             Leave Status(x),
+             Leave Reason(x),
+             Leave Applied Date(x),
+             Leave Comments)(x)
+
+
+
+ Guidelines : 
+
+	=> Find and remove attributes that are not functionally depending on whole key
+
+	=> Group the remaining attributes. 
+
+employee(employeeId,employeename,mobileno,dateofjoining,leave balance,manager id,departmennt)
+leave(employeeID- leaveid,no of days,leave startdate,leave end date,leave type,leave status,leave reason,leave apply date,leave comments)
+
+INSERT : In Policy Table, unless employeeId is not there policy details cannot be entered
+(Its wrong as policy exists even no agent is there) 
+
+UPDATE :  if leave needs to be extended we need to update
+
+DELETE :   if leave  balance deleted leave cant be approved
+*** 2NF inadequate ***
+
+3NF : Transitive Depedency 
+
+Guidelines : 
+
+	-> Find and remove attributes that are transitively depending on whole key
+	-> Group the remaining attributes. 
+
+
+employee(employeeId+,employeename,mobileno,dateofjoining,leave balance,manager id,departmennt)
+leave(leaveid+,no of days,leave start date,leave end date,leave type,leave status,leave reason,leave applied date,leave comments) 
+employeeleave(employeeID-,leaveID-)
+	empID+leaveID as (primary key) 
+
+
+
+ 

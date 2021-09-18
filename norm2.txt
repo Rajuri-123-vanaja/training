@@ -1,0 +1,87 @@
+Following details for Customer,
+-CustomerId
+- CustomerName
+- Username
+- Password
+- Phone no
+- Wallet balance
+- Address   
+         
+Following details for Vendor,
+- VendorId
+- VendorName
+- UserName
+- Password
+- Phone no
+- Address
+
+ Following details for Menu,
+- FoodId
+- FoodItem
+- Amount
+
+customervendormenu(customerid,CustomerName,username,password,phone no,balance,address,vendorid,vendorname,username,password,phoneno,address,foodid,fooditem,amount)
+
+Above table normalize and show the result
+
+customer(customerid,customerName,username,password,phone no,balance,address,vendorid,vendorname,username,password,phoneno,address,foodid,fooditem,amount)
+ 
+1nf as one customer can take multipe orders
+
+Insert : until the the order is given we cant prepare it
+
+Update: odering multiple items
+
+Delete:if the customer wants to change the order we need to delete teh order(replace)
+
+1NF inadequate to handle this situation  
+
+
+2NF
+-----------
+ customerid is taking as whole key(primary key)
+   
+
+customerid=>
+- CustomerName
+- Username
+- Password
+- Phone no
+- Wallet balance
+- VendorId 
+- VendorName 
+- UserName 
+- Password 
+- Phone no 
+- Address 
+- foodid(x)
+- fooditem(x) 
+- amount(x) 
+ 
+insert:ordered items should be inserted
+
+update:same order is ordered multiple times 
+
+delete: order can be cancelled 
+
+Guidelines:
+
+=>find and remove the attributes that are not functionally depending on whole key
+=>group the remaining attributes
+
+customer(customerid,customername,username,password,phoneno,wallet balance,address,vendorid,vendorname,username,pasword,phoneno,address)
+food(customerid-,vendorid-,foodid,fooditem,amount)
+
+3NF
+--------
+Transitive dependency
+
+service(customerid+,vendorid+,foodid)
+
+Guidelines:
+
+=>find and remove the attributes that are not transtively depending on whole key
+=>group the remaining attributes
+
+
+ 
